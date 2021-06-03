@@ -18,6 +18,8 @@ import ProjectCard from "../ProjectCard";
 import Spinner from "../Spinner";
 import Feedback from "../Feedback";
 import Select from "../Select";
+import ConnectionComponent from '../ConnectionComponent';
+import checkNetwork from '../../helpers/connection';
 
 class UserProjectsPage extends React.Component {
   constructor(props) {
@@ -28,6 +30,7 @@ class UserProjectsPage extends React.Component {
       clusterID: "",
       projectDescription: "",
       error: "",
+      connected: false
     };
 
     this.state = this.initialState;
@@ -38,6 +41,7 @@ class UserProjectsPage extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.validateProjectName = this.validateProjectName.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
+    this.checkConnection = this.checkConnection.bind(this);
   }
 
   componentDidMount() {
@@ -46,6 +50,7 @@ class UserProjectsPage extends React.Component {
     getUserProjects(data.id);
     getClustersList();
     clearUpdateProjectState();
+    this.checkConnection();
   }
 
   componentDidUpdate(prevProps) {
@@ -78,6 +83,15 @@ class UserProjectsPage extends React.Component {
 
   showForm() {
     this.setState({ openModal: true });
+  }
+
+  checkConnection(){
+    let net = checkNetwork();
+    console.log(net);
+    
+    if (!net){
+      this.setState({ connected: true});
+    }
   }
 
   hideForm() {
@@ -145,7 +159,13 @@ class UserProjectsPage extends React.Component {
   }
 
   render() {
-    const { openModal, projectName, projectDescription, error } = this.state;
+    const {
+      openModal,
+      projectName,
+      projectDescription,
+      error,
+      connected,
+     } = this.state;
     const {
       projects,
       clusters,
@@ -164,6 +184,7 @@ class UserProjectsPage extends React.Component {
           <InformationBar header="Projects" showBtn btnAction={this.showForm} />
         </div>
         <div className="MainRow">
+          {connected ? <ConnectionComponent /> : null }
           {isRetrieving ? (
             <div className="TableLoading">
               <div className="SpinnerWrapper">
