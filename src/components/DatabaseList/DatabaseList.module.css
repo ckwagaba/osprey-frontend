@@ -92,6 +92,7 @@
   flex-grow: 1;
   display: flex;
   font-size: 16px;
+  height: 50vh;
   text-align: center;
   justify-content: center;
   align-items: center;
