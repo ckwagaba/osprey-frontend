@@ -1,0 +1,125 @@
+.Page {
+  margin: 0;
+  background: #f1f1f1;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.TopRow {
+  width: 100%;
+}
+
+.MainRow {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 2rem;
+}
+
+.FooterRow {
+  padding: 3rem;
+}
+
+div.TableLoading {
+  display: flex;
+  height: 100%;
+  justify-self: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.NoResourcesMessage {
+  flex-grow: 1;
+  display: flex;
+  font-size: 16px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.ProjectList {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.ProjectFormErrorDiv {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #d63b3b;
+  text-align: center;
+  padding: 1rem 0;
+  height: 1rem;
+}
+
+.ClusterDrop {
+  width: 25rem;
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  font-size: inherit;
+  padding: 1rem;
+}
+
+.ClusterNameOption {
+  padding: 2rem 1.5rem;
+  color: #000;
+  background-color: #f9f9f9;
+  font-weight: bold;
+}
+
+.ModalFormInputs input::placeholder {
+  color: #808080;
+}
+
+.MainRow > .ConnectModal {
+  width: 100%;
+  margin-left: 0;
+}
+
+.ModalForm {
+  display: grid;
+  gap: 2rem;
+}
+
+
+.CancelBtn {
+  outline: 2px solid #000000;
+  color: #000000;
+  background-color: #ffffff;
+}
+
+.CancelBtn:hover {
+  color: #fff;
+  background-color: #000;
+  outline: 2px solid #000000;
+}
+
+.ModalFormButtons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.ModalFormHeading {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+.ModalFormInputs {
+  display: grid;
+  gap: 1rem;
+}
+
+.ModalFormInputs .InputText {
+  border: 2px solid #000000;
+  color: #000;
+}
+
+.ModalForm .ModalFormInputs .InputText::placeholder {
+  color: #000;
+}
+
+.ModalForm .ModalFormButtons {
+  display: flex;
+  justify-content: space-between;
+}

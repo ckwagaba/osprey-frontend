@@ -28,7 +28,7 @@ body {
 }
 
 div#root {
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-flow: column;
 }
@@ -306,7 +306,7 @@ tr.TableLoading td {
   max-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .TopRow {
