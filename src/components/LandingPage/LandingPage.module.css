@@ -15,6 +15,8 @@
   display: flex;
   justify-content: space-between;
   padding: 3rem;
+  padding-top:10rem;
+  padding-bottom:10rem;
   background: #008ac1;
 }
 
@@ -44,6 +46,7 @@
 }
 .FreeTrialButton {
   background-color: #f7b21f;
+  text-transform: uppercase;
   color: white;
   padding: 0.7rem;
   font-weight: bold;
@@ -75,13 +78,17 @@
 
 .LandingPageWhySection {
   background-color: #ffffff;
-  padding: 3rem;
+  padding: 5rem;
+}
+
+.LandingPageWhySectionWithBanner{
+  padding-top: 1rem;
 }
 
 .WhySectionContent {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 0.5rem;
+  gap: 1.5rem;
 }
 
 .DataCenterImage {
@@ -97,13 +104,16 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 0.5rem;
+  gap: 1.5rem;
 }
 
 .WhySectionItem {
-  padding: 0.5rem;
+  padding: 1rem;
   background-color: #f1f1f1;
   color: #555555;
+  display: grid;
+  grid-template-rows: max-content;
+  gap: 0.5rem;
 }
 
 .WhySectionCardTitle {
@@ -112,11 +122,22 @@
   font-weight: bold;
 }
 
+.WhySectionAction {
+  color: #555555;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 1.5rem;
+  gap: 0.6rem;
+  align-items: center;
+  justify-content: end;
+  cursor: pointer;
+}
+
 .PageBannerSection {
   background-color: #f7b21f;
   color: #f8f7e5;
   display: flex;
-  padding: 0 3rem;
+  padding: 1rem 3rem;
 }
 
 .LeftPageBannerSection {
@@ -140,14 +161,37 @@
 }
 .LeftPageBannerInner {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr;
+}
+
+.PageBannerLearnMoreContainer{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.PageBannerLearnMore{
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  border: 2px solid transparent;
+  background: #FEFEFE;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.PageBannerLearnMore:hover{
+  background: transparent;
+  border-color: #FEFEFE;
+  color: #FEFEFE;
 }
 
 .SolutionsSection {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 1rem;
+  gap: 4rem;
+  padding: 1rem 0 3rem 0;
 }
 
 .SolutionsContainer {
@@ -156,7 +200,11 @@
 
 .SolutionsIcon {
   flex: 1;
-  padding-top: 1.3rem;
+  padding-top: 1.1rem;
+}
+
+.SolutionsIcon svg{
+  height: 24px;
 }
 
 .SolutionsContent {
