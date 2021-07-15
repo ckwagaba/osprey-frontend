@@ -99,3 +99,51 @@
 .ErrorOnWhite {
   width: 25rem;
 }
+.SideBarSection {
+  overflow: hidden;
+  overflow-y: scroll;
+  height: calc(100vh - 5rem);
+}
+
+.SideBarSection::-webkit-scrollbar {
+  display: none;
+  min-width: fit-content;
+}
+
+.Page {
+  margin: 0;
+  background: #f1f1f1;
+  max-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+}
+
+.MainSection {
+  /* divided into two columns */
+  background-color: #f1f1f1;
+  display: grid;
+  grid-template-columns: 1.3fr 6fr;
+  overflow: hidden;
+}
+
+.MainContentSection {
+  /* divided into two rows */
+  display: grid;
+  grid-template-rows: 80px 4fr;
+  overflow: hidden;
+}
+.TopBarSection {
+  background-color: black;
+}
+
+.SideBarSection {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.ContentSection {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+}

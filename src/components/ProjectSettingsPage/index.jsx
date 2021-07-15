@@ -18,7 +18,7 @@ import TextArea from "../TextArea";
 import Feedback from "../Feedback";
 import DeleteWarning from "../DeleteWarning";
 import BlackInputText from "../BlackInputText";
-import "./ProjectSettingsPage.css";
+import styles from "./ProjectSettingsPage.module.css";
 
 class ProjectSettingsPage extends React.Component {
   constructor(props) {
@@ -89,53 +89,53 @@ class ProjectSettingsPage extends React.Component {
       },
     } = this.props;
 
-    if (projectName !== name || projectDescription !== description) {
-      if (!projectName || !projectDescription) {
+    if (projectName.trim() !== name || projectDescription.trim() !== description) {
+      if (!projectName.trim() || !projectDescription.trim()) {
         this.setState({
           error: "please provide either a new name or description",
         });
       } else {
-        if (projectName !== name && projectDescription === description) {
-          if (!this.validateProjectName(projectName)) {
+        if (projectName.trim() !== name && projectDescription.trim() === description) {
+          if (!this.validateProjectName(projectName.trim())) {
             this.setState({
               error: "name should start with a letter",
             });
           } else if (
-            this.validateProjectName(projectName) === "false_convention"
+            this.validateProjectName(projectName.trim()) === "false_convention"
           ) {
             this.setState({
               error: "name may only contain letters and a hypen -",
             });
-          } else if (projectName.length > 22) {
+          } else if (projectName.trim().length > 22) {
             this.setState({
               error: "project name cannot exceed 22 characters",
             });
           } else {
-            const newProject = { name: projectName };
+            const newProject = { name: projectName.trim() };
             updateProject(projectID, newProject);
           }
         }
 
-        if (projectName === name && projectDescription !== description) {
-          const newProject = { description: projectDescription };
+        if (projectName.trim() === name && projectDescription.trim() !== description) {
+          const newProject = { description: projectDescription.trim() };
           updateProject(projectID, newProject);
         }
 
-        if (projectName !== name && projectDescription !== description) {
-          if (!this.validateProjectName(projectName)) {
+        if (projectName.trim() !== name && projectDescription.trim() !== description) {
+          if (!this.validateProjectName(projectName.trim())) {
             this.setState({
               error: "name should start with a letter",
             });
           } else if (
-            this.validateProjectName(projectName) === "false_convention"
+            this.validateProjectName(projectName.trim()) === "false_convention"
           ) {
             this.setState({
               error: "name may only contain letters and a hypen -",
             });
           } else {
             const newProject = {
-              name: projectName,
-              description: projectDescription,
+              name: projectName.trim(),
+              description: projectDescription.trim(),
             };
             updateProject(projectID, newProject);
           }
@@ -186,13 +186,13 @@ class ProjectSettingsPage extends React.Component {
     const { projectID, userID } = params;
 
     return (
-      <div className="Page">
+      <div className={styles.Page} >
         {isUpdated || isDeleted ? this.renderRedirect() : null}
-        <div className="TopBarSection">
+        <div className={styles.TopBarSection}>
           <Header />
         </div>
-        <div className="MainSection">
-          <div className="SideBarSection">
+        <div className={styles.MainSection}>
+          <div className={styles.SideBarSection}>
             <SideBar
               name={name}
               params={params}
@@ -205,11 +205,11 @@ class ProjectSettingsPage extends React.Component {
               networkLink={`/users/${userID}/projects/${projectID}/network/`}
             />
           </div>
-          <div className="MainContentSection">
-            <div className="InformationBarSection">
+          <div className={styles.MainContentSection}>
+            <div className={styles.InformationBarSection}>
               <InformationBar header="Settings" />
             </div>
-            <div className="ContentSection">
+            <div className={styles.ContentSection}>
               <div>
                 <div
                   onSubmit={(e) => {
@@ -217,7 +217,7 @@ class ProjectSettingsPage extends React.Component {
                     e.preventDefault();
                   }}
                 >
-                  <div className="UpdateForm">
+                  <div className={styles.UpdateForm}>
                     <BlackInputText
                       placeholder="Project Name"
                       name="projectName"
@@ -248,22 +248,22 @@ class ProjectSettingsPage extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className="DeleteButtonDiv">
+              <div className={styles.DeleteButtonDiv}>
                 <PrimaryButton
                   label="Delete Project"
-                  className="DeleteBtn"
+                  className={styles.DeleteBtn}
                   onClick={this.showDeleteAlert}
                 />
               </div>
               {openDeleteAlert && (
-                <div className="ProjectDeleteModel">
+                <div className={styles.ProjectDeleteModel}>
                   <Modal
                     showModal={openDeleteAlert}
                     onClickAway={this.hideDeleteAlert}
                   >
-                    <div className="DeleteProjectModel">
-                      <div className="DeleteProjectModalUpperSection">
-                        <div className="DeleteDescription">
+                    <div className={styles.DeleteProjectModel}>
+                      <div className={styles.DeleteProjectModalUpperSection}>
+                        <div className={styles.DeleteDescription}>
                           Are you sure you want to delete&nbsp;
                           <span>{projectName}</span>
                           &nbsp; ?
@@ -271,16 +271,16 @@ class ProjectSettingsPage extends React.Component {
                         </div>
                       </div>
 
-                      <div className="DeleteProjectModalLowerSection">
-                        <div className="DeleteProjectModelButtons">
+                      <div className={styles.DeleteProjectModalLowerSection}>
+                        <div className={styles.DeleteProjectModelButtons}>
                           <PrimaryButton
                             label="cancel"
-                            className="CancelBtn"
+                            className={styles.CancelBtn}
                             onClick={this.hideDeleteAlert}
                           />
                           <PrimaryButton
                             label={isDeleting ? <Spinner /> : "Delete"}
-                            className="DeleteBtn"
+                            className={styles.DeleteBtn}
                             onClick={(e) =>
                               this.handleDeleteProject(e, params.projectID)
                             }
